@@ -1,11 +1,14 @@
 <template>
-	<div class="header">
-		<p>Mini Shop</p>
-		<ICartButton :quantity="5" />
+	<div id="app">
+		<div class="header">
+			<p>Mini Shop</p>
+			<ICartButton :quantity="5" />
+		</div>
+		<div class="main">
+			<Button :apperance="'unprimary'">Добавить</Button>
+			<Button :apperance="'primary'">Купить</Button>
+		</div>
 	</div>
-	<div class="main"></div>
-	<Button :apperance="'unprimary'">Добавить</Button>
-	<Button :apperance="'primary'">Купить</Button>
 </template>
 
 <script lang="ts" setup>
@@ -16,6 +19,9 @@ import ICartButton from '@components/CartButton.vue'
 
 <style lang="scss" scoped>
 @import '@scss/colors.scss';
+#app {
+	height: 100vh;
+}
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -24,7 +30,8 @@ import ICartButton from '@components/CartButton.vue'
 	color: white;
 	align-items: center;
 }
-.app {
-	color: $primary;
+.main {
+	height: 100%;
+	background-color: $light;
 }
 </style>

@@ -18,7 +18,8 @@
       "@pages/*": ["src/pages/*"],
       "@store/*": ["src/store/*"]
     },
-    "types": ["vite-svg-loader", "vite/client", "declaration.d.ts"]
+    "types": ["vite-svg-loader", "vite/client"]
+    
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "declaration.d.ts", "declaration.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="main"
+		class="main-btn"
 		:class="{
 			primary: props.apperance === 'primary',
 			unprimary: props.apperance === 'unprimary'
@@ -21,9 +21,8 @@ const props = withDefaults(defineProps<IButton>(), {
 
 <style lang="scss" scoped>
 @import '@scss/colors.scss';
-.main {
+.main-btn {
 	cursor: pointer;
-	border: none;
 	background-color: $primary;
 	color: $light;
 	position: relative;
@@ -34,12 +33,16 @@ const props = withDefaults(defineProps<IButton>(), {
 	border-radius: 10px;
 	font-size: 1em;
 	transition: all 0.2s;
+	border: none;
 }
-.main:hover {
+.unprimary {
+	background-color: $black;
+}
+.main-btn:hover {
 	background-color: $light;
 	color: $black;
 }
-.main:hover::before {
+.main-btn:hover::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -48,10 +51,7 @@ const props = withDefaults(defineProps<IButton>(), {
 	max-width: 100px;
 	width: 100%;
 	min-height: 40px;
-	border-radius: 10px;
+	border-radius: 11px;
 	border: 1px solid $black;
-}
-.unprimary {
-	background-color: $black;
 }
 </style>
