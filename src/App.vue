@@ -1,11 +1,18 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import styles from './styles.module.scss'
-export default {}
-</script>
-
 <template>
-	<div>Hello</div>
+	<div class="header"></div>
+	<div class="main"></div>
+	<Button :apperance="'unprimary'">Добавить</Button>
+	<Button :apperance="'primary'">Купить</Button>
 </template>
 
-<style module></style>
+<script lang="ts" setup>
+import { defineComponent } from 'vue'
+import Button from '@components/Button.vue'
+</script>
+
+<style lang="scss">
+@import '@scss/colors.scss';
+.app {
+	color: $primary;
+}
+</style>
