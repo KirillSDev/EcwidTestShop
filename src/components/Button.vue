@@ -27,7 +27,8 @@ const props = withDefaults(defineProps<IButton>(), {
 	background-color: $primary;
 	color: $light;
 	position: relative;
-	min-width: 100px;
+	max-width: 100px;
+	width: 100%;
 	padding: 10px;
 	min-height: 40px;
 	border-radius: 10px;
@@ -44,7 +45,8 @@ const props = withDefaults(defineProps<IButton>(), {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	min-width: 100px;
+	max-width: 100px;
+	width: 100%;
 	min-height: 40px;
 	border-radius: 10px;
 	border: 1px solid $black;

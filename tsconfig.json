@@ -17,8 +17,9 @@
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@store/*": ["src/store/*"]
-    }
+    },
+    "types": ["vite-svg-loader", "vite/client", "declaration.d.ts"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "declaration.d.ts", "declaration.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
