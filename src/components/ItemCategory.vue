@@ -6,15 +6,12 @@
 		</div>
 	</div>
 </template>
+
 <script lang="ts" setup>
-interface ICategory {
-	id: number
-	name: string
-	imageUrl: string
-	productId: string
-}
+import { ICategory } from '@interfaces/Category.interface'
 const props = defineProps<{ category: ICategory }>()
 </script>
+
 <style lang="scss" scoped>
 @import '@scss/colors.scss';
 .container {
