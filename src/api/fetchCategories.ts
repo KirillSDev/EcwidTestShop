@@ -1,7 +1,7 @@
-import axios from "@/core/axios"
+import axios from "@core/axios"
 
-const STORE_ID = process.env.STORE_ID
-const TOKEN = process.env.TOKEN
+const STORE_ID = import.meta.env.VITE_STORE_ID
+const TOKEN = import.meta.env.VITE_TOKEN
 
 export const fetchCategories = async () => {
     try {
@@ -9,7 +9,7 @@ export const fetchCategories = async () => {
             method: 'get',
             url: `${STORE_ID}/categories`,
             headers: {
-                Authorization: 'Bearer' +  TOKEN
+                Authorization: 'Bearer ' +  TOKEN
             }
     
         })
