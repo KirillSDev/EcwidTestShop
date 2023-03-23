@@ -70,6 +70,7 @@ const props = defineProps<IProps>()
 	margin-top: 10px;
 	display: flex;
 	justify-content: center;
+	z-index: 21;
 }
 
 .price {
@@ -106,15 +107,21 @@ const props = defineProps<IProps>()
 	transform: scale(1.06);
 }
 .container:hover::before {
-	content: '';
-	border: 1px solid $black;
+	content: 'More information';
+	font-size: 1em;
+	font-weight: 900;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $light;
+	text-shadow: 1px 1px 2px $black;
+	border: 1px solid $black;
+	border-radius: 10px;
+	z-index: 20;
+	background-color: #f1ac8a75;
 	width: 100%;
 	height: 100%;
 	min-height: 40px;
-	border-radius: 10px;
 }
 </style>
