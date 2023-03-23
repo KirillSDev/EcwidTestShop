@@ -15,6 +15,7 @@
     "noEmit": true,
     "paths": {
       "@routes/*": ["src/routes/*"],
+      "@utils/*": ["src/utils/*"],
       "@pages/*": ["src/pages/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@core/*": ["src/core/*"],

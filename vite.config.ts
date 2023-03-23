@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@routes": path.resolve(__dirname, "src/routes"),
+      "@utils": path.resolve(__dirname, "src/utils"),
       "@pages": path.resolve(__dirname, "src/pages"),
       '@interfaces': path.resolve(__dirname, 'src/interfaces'),
       '@core': path.resolve(__dirname, 'src/core'),
