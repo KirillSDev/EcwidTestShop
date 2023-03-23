@@ -52,6 +52,7 @@ const props = withDefaults(defineProps<IButton>(), {
 	max-width: 100px;
 	width: 100%;
 	min-height: 40px;
+	height: 100%;
 	border-radius: 11px;
 	border: 1px solid $black;
 }
