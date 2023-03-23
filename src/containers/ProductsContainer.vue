@@ -16,6 +16,7 @@ import { router } from '@routes/index'
 import { IProduct } from '@interfaces/Product.interface'
 const productsStore = useProductsStore()
 const goToProduct = (product: IProduct) => {
+	productsStore.setCurrentProduct(product)
 	router.push({
 		name: 'product',
 		params: {
