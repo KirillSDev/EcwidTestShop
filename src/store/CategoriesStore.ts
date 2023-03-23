@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { fetchCategories } from '@api/fetchCategories'
+import { fetchCategories, fetchCategory } from '@api/fetchCategories'
 import { ref } from 'vue'
 import { ICategory } from '@interfaces/Category.interface'
 
@@ -16,10 +16,17 @@ export const useCategoriesStore = defineStore('categoriesStore', () => {
 		categories.value = data
 		status.value = true
 	}
+	const setCategoryById = async (id: number) => {
+		const response = await fetchCategory(id)
+		const data = await response?.data
+		currentCategory.value = data
+	}
 	return {
 		categories,
 		status,
 		getCategories,
-		setCurrentCategory
+		setCurrentCategory,
+		currentCategory,
+		setCategoryById
 	}
 })
