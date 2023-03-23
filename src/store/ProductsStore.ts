@@ -10,6 +10,7 @@ export const useProductsStore = defineStore('productsStore', () => {
         await fetchProducts().then(res => {
             products.value = res?.data.items
         })
+        status.value = true
     }
     return {
         products,
