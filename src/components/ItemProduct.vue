@@ -9,7 +9,7 @@
 		</div>
 		<div class="buy-btn">
 			<Button @click="checkInCart(product)" :apperance="'unprimary'">{{
-				status
+				getStatus(props.product).value
 			}}</Button>
 		</div>
 	</div>
@@ -20,20 +20,8 @@ import Button from './Button.vue'
 import { defineProps, computed } from 'vue'
 import { IProduct } from '@interfaces/Product.interface'
 import { useCartStore } from '@store/CartStore'
-
-const cartStore = useCartStore()
-const status = computed(() => {
-	return cartStore.checkCart(props.product.id) ? 'Удалить...' : 'Купить'
-})
-
-const checkInCart = (product: IProduct) => {
-	const foundProduct = cartStore.checkCart(product.id)
-	if (foundProduct) {
-		cartStore.deleteFromCart(product)
-	} else {
-		cartStore.addToCart(product)
-	}
-}
+import { getStatus } from '@utils/CartUtils'
+import { checkInCart } from '@utils/CartUtils'
 
 interface IProps {
 	product: IProduct
@@ -51,6 +39,7 @@ const props = defineProps<IProps>()
 	padding: 10px;
 	max-width: 220px;
 	border-radius: 10px;
+	height: fit-content;
 	background-image: linear-gradient(
 		to left top,
 		#f5e9cf,
