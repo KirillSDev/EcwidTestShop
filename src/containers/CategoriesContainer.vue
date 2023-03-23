@@ -22,7 +22,7 @@ onMounted(async () => {
 })
 
 const goToCategory = (category: ICategory) => {
-	categoriesStore.setCurrentCategory(category)
+	categoriesStore.setCategoryById(category.id)
 	router.push({
 		name: 'category',
 		params: {
