@@ -1,8 +1,9 @@
 import {defineStore} from 'pinia'
 import { ref } from 'vue'
 import { fetchProducts } from '@api/fetchProducts'
+import { IProduct } from '@interfaces/Product.interface'
 export const useProductsStore = defineStore('productsStore', () => {
-    const products = ref([])
+    const products = ref([] as IProduct[])
     const currentProduct = ref(null)
     const status = ref<Boolean>(false)
     const getProducts = async () => {
