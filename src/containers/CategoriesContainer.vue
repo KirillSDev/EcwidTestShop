@@ -37,7 +37,7 @@ const goToCategory = (id: number) => {
 <style lang="scss" module>
 .container {
 	margin: 0px auto;
-	padding: 20px;
+	padding-top: 20px;
 	display: grid;
 	max-width: fit-content;
 	gap: 20px;
