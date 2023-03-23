@@ -1,6 +1,7 @@
 <template>
 	<button
 		class="main-btn"
+		@click.stop
 		:class="{
 			primary: props.apperance === 'primary',
 			unprimary: props.apperance === 'unprimary'
