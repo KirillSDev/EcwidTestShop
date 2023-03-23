@@ -2,15 +2,15 @@ import { IProduct } from '@interfaces/Product.interface'
 import { useCartStore } from '@store/CartStore'
 import { computed } from 'vue'
 
-const cartStore = useCartStore()
-
-export const getStatus = (props: { product: IProduct }) => {
+export const getStatus = (product: IProduct) => {
+	const cartStore = useCartStore()
 	return computed(() => {
-		return cartStore.checkCart(props.product.id) ? 'Удалить...' : 'Купить'
+		return cartStore.checkCart(product.id) ? 'Удалить...' : 'Купить'
 	})
 }
 
 export const checkInCart = (product: IProduct) => {
+	const cartStore = useCartStore()
 	const foundProduct = cartStore.checkCart(product.id)
 	if (foundProduct) {
 		cartStore.deleteFromCart(product)
