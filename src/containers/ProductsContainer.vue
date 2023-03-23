@@ -4,9 +4,6 @@
 			:product="product"
 			v-for="product in productsStore.products"
 		></ItemProduct>
-		<div :class="$style.loading" v-if="!productsStore.status">
-			<Loading />
-		</div>
 	</div>
 </template>
 
@@ -14,7 +11,6 @@
 import { useProductsStore } from '@store/ProductsStore'
 import { onMounted } from 'vue'
 import ItemProduct from '@components/ItemProduct.vue'
-import Loading from '@components/Loading.vue'
 
 const productsStore = useProductsStore()
 

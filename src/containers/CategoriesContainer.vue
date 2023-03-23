@@ -5,9 +5,6 @@
 			v-for="category in categoriesStore.categories"
 			:category="category"
 		/>
-		<div :class="$style.loading" v-if="!categoriesStore.status">
-			<Loading />
-		</div>
 	</div>
 </template>
 
@@ -15,7 +12,6 @@
 import { useCategoriesStore } from '@store/CategoriesStore'
 import { onMounted } from 'vue'
 import ItemCategory from '@components/ItemCategory.vue'
-import Loading from '@components/Loading.vue'
 import { router } from '@routes/index'
 
 const categoriesStore = useCategoriesStore()
@@ -37,7 +33,6 @@ const goToCategory = (id: number) => {
 <style lang="scss" module>
 .container {
 	margin: 0px auto;
-	padding-top: 20px;
 	display: grid;
 	max-width: fit-content;
 	gap: 20px;
