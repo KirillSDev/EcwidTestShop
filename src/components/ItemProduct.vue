@@ -1,4 +1,4 @@
-<template lang="">
+<template>
 	<div class="container">
 		<div class="header">
 			<h3 class="name">{{ product.name }}</h3>
@@ -8,18 +8,35 @@
 			<img class="image" :src="product.imageUrl" height="200" />
 		</div>
 		<div class="buy-btn">
-			<Button :apperance="'unprimary'">Купить</Button>
+			<Button @click="checkInCart(product)" :apperance="'unprimary'">{{
+				status
+			}}</Button>
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import Button from './Button.vue'
-import { ref, defineProps } from 'vue'
+import { defineProps, computed } from 'vue'
 import { IProduct } from '@interfaces/Product.interface'
+import { useCartStore } from '@store/CartStore'
+
+const cartStore = useCartStore()
+const status = computed(() => {
+	return cartStore.checkCart(props.product.id) ? 'Удалить...' : 'Купить'
+})
+
+const checkInCart = (product: IProduct) => {
+	const foundProduct = cartStore.checkCart(product.id)
+	if (foundProduct) {
+		cartStore.deleteFromCart(product)
+	} else {
+		cartStore.addToCart(product)
+	}
+}
 
 interface IProps {
-	product: Omit<IProduct, 'description'>
+	product: IProduct
 }
 const props = defineProps<IProps>()
 </script>
