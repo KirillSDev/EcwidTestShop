@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="img-container">
-			<img class="image" :src="category.imageUrl" height="200" />
+			<img class="image" :src="category.thumbnailUrl" height="200" />
 			<h4 class="name">{{ category.name }}</h4>
 		</div>
 	</div>
@@ -52,6 +52,7 @@ const props = defineProps<{ category: ICategory }>()
 	position: absolute;
 	z-index: 20;
 	font-size: 1em;
+
 	color: white;
 	background-color: rgba(0, 0, 0, 0.637);
 	padding: 10px;

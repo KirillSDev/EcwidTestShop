@@ -5,7 +5,13 @@
 			<p class="price">{{ product.price + ' $' }}</p>
 		</div>
 		<div class="img-container">
-			<img class="image" :src="product.imageUrl" height="200" />
+			<img
+				class="image"
+				:src="product.thumbnailUrl"
+				height="200"
+				width="200"
+				:alt="product.name"
+			/>
 		</div>
 		<div class="buy-btn">
 			<Button @click="checkInCart(product)" :apperance="'unprimary'">{{
@@ -17,9 +23,8 @@
 
 <script lang="ts" setup>
 import Button from './Button.vue'
-import { defineProps, computed } from 'vue'
+import { defineProps } from 'vue'
 import { IProduct } from '@interfaces/Product.interface'
-import { useCartStore } from '@store/CartStore'
 import { getStatus } from '@utils/CartUtils'
 import { checkInCart } from '@utils/CartUtils'
 
@@ -71,6 +76,7 @@ const props = defineProps<IProps>()
 }
 .name {
 	word-break: break-word;
+	font-weight: 100;
 }
 .buy-btn {
 	margin-top: 10px;
