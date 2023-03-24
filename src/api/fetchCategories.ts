@@ -8,6 +8,9 @@ export const fetchCategories = async () => {
 		const response = await axios({
 			method: 'get',
 			url: `${STORE_ID}/categories`,
+			params: {
+				productIds: true
+			},
 			headers: {
 				Authorization: 'Bearer ' + TOKEN
 			}
@@ -22,6 +25,7 @@ export const fetchCategory = async (id: number) => {
 		const response = await axios({
 			method: 'get',
 			url: `${STORE_ID}/categories/${id}`,
+
 			headers: {
 				Authorization: 'Bearer ' + TOKEN
 			}

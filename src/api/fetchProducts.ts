@@ -8,6 +8,11 @@ export const fetchProducts = async () => {
 		const response = await axios({
 			method: 'get',
 			url: `${STORE_ID}/products`,
+			params: {
+				categories: 'home',
+				includeProductsFromSubcategories: true
+			},
+
 			headers: {
 				Authorization: 'Bearer ' + TOKEN
 			}
@@ -23,6 +28,7 @@ export const fetchProduct = async (productId: number) => {
 		const response = axios({
 			method: 'get',
 			url: `${STORE_ID}/products/${productId}`,
+			params: {},
 			headers: {
 				Authorization: 'Bearer ' + TOKEN
 			}
