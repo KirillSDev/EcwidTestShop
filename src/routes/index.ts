@@ -1,8 +1,9 @@
-import ButtonVue from '@components/Button.vue'
-import HomePage from '@pages/HomePage.vue'
-import CategoryPage from '@pages/CategoryPage.vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import DetailPage from '@pages/DetailPage.vue'
+import NotFoundPage from '@pages/NotFoundPage.vue'
+import HomePage from '@pages/HomePage.vue'
+const DetailPage = () => import('@pages/DetailPage.vue')
+const CartPageVue = () => import('@pages/CartPage.vue')
+const CategoryPage = () => import('@pages/CategoryPage.vue')
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -19,6 +20,16 @@ const routes: Array<RouteRecordRaw> = [
 		path: '/product/:id',
 		name: 'product',
 		component: DetailPage
+	},
+	{
+		path: '/cart',
+		name: 'cart',
+		component: CartPageVue
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		name: 'NotFound',
+		component: NotFoundPage
 	}
 ]
 
