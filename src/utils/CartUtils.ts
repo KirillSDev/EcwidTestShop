@@ -5,7 +5,7 @@ import { computed } from 'vue'
 export const getStatus = (product: IProduct) => {
 	const cartStore = useCartStore()
 	return computed(() => {
-		return cartStore.checkCart(product.id) ? 'Удалить...' : 'Купить'
+		return cartStore.checkCart(product.id) ? 'Удалить' : 'Купить'
 	})
 }
 
