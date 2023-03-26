@@ -1,25 +1,24 @@
 <template>
-	<button class="button">
-		<CartIcon class="icon" />
-		<div class="quantity" v-if="quantity > 0 && quantity < 10">
+	<button :class="$style.button">
+		<CartIcon :class="$style.icon" />
+		<div :class="$style.quantity" v-if="quantity > 0 && quantity < 10">
 			{{ quantity }}
 		</div>
-		<div class="quantity" v-else-if="quantity > 9">>9</div>
+		<div :class="$style.quantity" v-else-if="quantity > 9">>9</div>
 	</button>
 </template>
 
 <script lang="ts" setup>
 import CartIcon from '@assets/icons/cart.svg?component'
 import { useCartStore } from '@store/CartStore'
-import { watch, ref } from 'vue'
+import { computed } from 'vue'
 const cartStore = useCartStore()
-const quantity = ref(0)
-watch(cartStore.getCartLength, (newValue) => {
-	quantity.value = newValue
+const quantity = computed(() => {
+	return cartStore.cart.length
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" module>
 @import '@scss/colors.scss';
 .button {
 	display: flex;
