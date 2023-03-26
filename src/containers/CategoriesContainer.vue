@@ -4,6 +4,7 @@
 			@click="goToCategory(category)"
 			v-for="category in categoriesStore.categories"
 			:category="category"
+			:key="category.id"
 		/>
 	</div>
 </template>
@@ -12,17 +13,15 @@
 import { useCategoriesStore } from '@store/CategoriesStore'
 import { onMounted } from 'vue'
 import ItemCategory from '@components/ItemCategory.vue'
-import { router } from '@routes/index'
+import { useRouter } from 'vue-router'
 import { ICategory } from '@interfaces/Category.interface'
-
 const categoriesStore = useCategoriesStore()
 
 onMounted(async () => {
-	await categoriesStore.getCategories()
+	categoriesStore.getCategories()
 })
-
+const router = useRouter()
 const goToCategory = (category: ICategory) => {
-	categoriesStore.setCategoryById(category.id)
 	router.push({
 		name: 'category',
 		params: {
@@ -37,6 +36,7 @@ const goToCategory = (category: ICategory) => {
 	margin: 0px auto;
 	display: grid;
 	max-width: fit-content;
+
 	gap: 20px;
 	grid-template-columns: repeat(2, auto);
 }

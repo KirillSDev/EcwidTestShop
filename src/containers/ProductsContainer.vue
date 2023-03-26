@@ -1,9 +1,9 @@
 <template>
 	<div :class="$style.container">
 		<ItemProduct
-			@click="goToProduct(product)"
 			:product="product"
-			v-for="product in productsStore.products"
+			v-for="product in products"
+			:key="product.id"
 		></ItemProduct>
 	</div>
 </template>
@@ -12,33 +12,26 @@
 import { useProductsStore } from '@store/ProductsStore'
 import { onMounted } from 'vue'
 import ItemProduct from '@components/ItemProduct.vue'
-import { router } from '@routes/index'
 import { IProduct } from '@interfaces/Product.interface'
 const productsStore = useProductsStore()
-const goToProduct = (product: IProduct) => {
-	productsStore.setCurrentProduct(product)
-	router.push({
-		name: 'product',
-		params: {
-			id: product.id
-		}
-	})
-}
-
+const props = defineProps<{ products: IProduct[] }>()
 onMounted(async () => {
-	await productsStore.getProducts()
+	productsStore.getProducts()
 })
 </script>
 
 <style lang="scss" module>
+@import '@scss/colors.scss';
 .container {
 	overflow: hidden;
 	padding: 20px;
-
+	background-color: $black;
+	border-radius: 20px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 20px;
+	position: relative;
 }
 
 @media (max-width: 480px) {
