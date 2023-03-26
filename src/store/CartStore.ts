@@ -1,32 +1,24 @@
 import { IProduct } from '@interfaces/Product.interface'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch, computed } from 'vue'
+
 export const useCartStore = defineStore('cartStore', () => {
 	const cart = ref([] as IProduct[])
-	const getFullPrice = () => {
+	const cartItemsInLocalStorage = localStorage.getItem('cart')
+	if (cartItemsInLocalStorage) {
+		cart.value = JSON.parse(cartItemsInLocalStorage)._value
+	}
+	const getFullPrice = computed(() => {
 		return cart.value.reduce((sum: number, item) => {
 			return sum + item.price
 		}, 0)
-	}
-	const getCartLength = () => {
-		return cart.value.length
-	}
-	const checkCart = (productId: number) => {
-		const foundProduct = cart.value.find((item) => {
-			return item.id === productId
-		})
-		if (!foundProduct) {
-			return false
-		} else {
-			return true
-		}
+	})
+	const checkCart = (productId: number): boolean => {
+		return cart.value.some((item) => item.id === productId)
 	}
 	const addToCart = (product: IProduct) => {
-		const foundProduct = cart.value.find((item) => {
-			return item.id === product.id
-		})
-		if (!foundProduct) {
-			cart.value.push(product)
+		if (!checkCart(product.id)) {
+			cart.value = [...cart.value, product]
 		}
 	}
 	const deleteFromCart = (product: IProduct) => {
@@ -34,12 +26,20 @@ export const useCartStore = defineStore('cartStore', () => {
 			return item.id !== product.id
 		})
 	}
+	watch(
+		() => cart,
+		(state) => {
+			localStorage.setItem('cart', JSON.stringify(state))
+		},
+		{
+			deep: true
+		}
+	)
 	return {
 		cart,
 		getFullPrice,
 		addToCart,
 		deleteFromCart,
-		getCartLength,
 		checkCart
 	}
 })
