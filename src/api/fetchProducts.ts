@@ -25,7 +25,7 @@ export const fetchProducts = async () => {
 
 export const fetchProduct = async (productId: number) => {
 	try {
-		const response = axios({
+		const response = await axios({
 			method: 'get',
 			url: `${STORE_ID}/products/${productId}`,
 			params: {},
