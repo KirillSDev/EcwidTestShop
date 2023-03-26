@@ -17,6 +17,7 @@
       "@routes/*": ["src/routes/*"],
       "@utils/*": ["src/utils/*"],
       "@pages/*": ["src/pages/*"],
+      "@layouts/*": ["src/layouts/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@core/*": ["src/core/*"],
       "@api/*": ["src/api/*"],
