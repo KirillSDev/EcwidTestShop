@@ -7,4 +7,10 @@ export interface IProduct {
 	smallThumbnailUrl: string
 	description: string
 	categoryIds: number[]
+	galleryImages: IGalleryProductImages[]
+}
+
+export interface IGalleryProductImages {
+	id: number
+	thumbnailUrl: string
 }
