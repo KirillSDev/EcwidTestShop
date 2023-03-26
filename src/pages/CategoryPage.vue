@@ -1,32 +1,12 @@
 <template>
-	<div :class="$style.main">
-		<ItemProduct
-			:product="product"
-			v-for="product in productsStore.productsByCategory"
-		/>
-	</div>
+	<BaseLayout>
+		<ProductsContainer :products="globalStore.filterProductsByCategory" />
+	</BaseLayout>
 </template>
 
 <script setup lang="ts">
-import ItemProduct from '@components/ItemProduct.vue'
-import { useProductsStore } from '@store/ProductsStore'
-import { useCategoriesStore } from '@store/CategoriesStore'
-
-const categoriesStore = useCategoriesStore()
-const productsStore = useProductsStore()
+import ProductsContainer from '@containers/ProductsContainer.vue'
+import { useGlobalStore } from '@store/GlobalStore'
+import BaseLayout from '@layouts/BaseLayout.vue'
+const globalStore = useGlobalStore()
 </script>
-
-<style lang="scss" module>
-@import '@scss/colors.scss';
-.main {
-	height: calc(100% - 70px);
-	display: grid;
-	overflow: scroll;
-	overflow-x: hidden;
-	padding: 20px;
-	justify-content: center;
-	gap: 20px;
-	grid-template-columns: repeat(3, auto);
-	background-color: $light;
-}
-</style>

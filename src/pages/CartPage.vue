@@ -1,63 +1,53 @@
 <template>
-	<div :class="$style.container">
-		<div :class="$style.main" v-if="cartStore.cart.length">
-			<div :class="$style['items']">
+	<BaseLayout>
+		<div class="main" v-if="cartStore.cart.length">
+			<div class="items">
 				<TransitionGroup name="animation">
-					<div
-						:class="$style['cart-item']"
+					<ItemCart
 						v-for="product in cartStore.cart"
+						:product="product"
 						:key="product.id"
-					>
-						<img
-							:src="product.smallThumbnailUrl"
-							alt="image"
-							height="50"
-							width="50"
-						/>
-						<p :class="$style.name">{{ product.name }}</p>
-						<p :class="$style.price">{{ product.price + ' $' }}</p>
-						<Button
-							@click="cartStore.deleteFromCart(product)"
-							:class="$style.button"
-							>Удалить</Button
-						>
-					</div>
+					></ItemCart>
 				</TransitionGroup>
 			</div>
-			<div :class="$style['final-cost']">
-				{{ 'Итого: ' + cartStore.getFullPrice() + ' $' }}
+			<div class="final-cost">
+				{{ 'Итого: ' + cartStore.getFullPrice + ' $' }}
 			</div>
-			<Button :class="$style['buy-btn']" @click="isOrdered = true">
+			<Button :apperance="'primary'" class="buy-btn" @click="isOrdered = true">
 				Оформить заказ
 			</Button>
-			<div v-if="isOrdered" :class="$style['successful-purchase']">
-				Спасибо за покупку
-			</div>
+			<Modal @close-btn="closeModal" v-if="isOrdered">Спасибо за покупку</Modal>
 		</div>
-		<div v-else :class="$style.empty">В корзине ничего нет.</div>
-	</div>
+		<div v-else class="empty">В корзине ничего нет.</div>
+	</BaseLayout>
 </template>
 
 <script setup lang="ts">
 import { useCartStore } from '@store/CartStore'
 import Button from '@components/Button.vue'
 import { ref } from 'vue'
-
+import BaseLayout from '@layouts/BaseLayout.vue'
+import ItemCart from '@components/ItemCart.vue'
+import Modal from '@components/Modal.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const isOrdered = ref(false)
 const cartStore = useCartStore()
+const closeModal = () => {
+	router.push({
+		name: 'home'
+	})
+	cartStore.cart = []
+}
 </script>
 
-<style lang="scss" module>
+<style lang="scss" scoped>
 @import '@scss/colors.scss';
 
-.container {
-	height: calc(100vh - 70px);
-	position: relative;
-}
 .main {
 	margin: 0 auto;
-	margin-top: 100px;
-	width: 500px;
+	max-width: 800px;
+	width: calc(100% - 10px);
 	padding: 10px;
 	background-color: $black;
 	height: fit-content;
@@ -67,35 +57,15 @@ const cartStore = useCartStore()
 	gap: 10px;
 }
 
-.cart-item {
-	border-radius: 10px;
-	color: $light;
-	align-items: center;
-	background-color: $unprimary;
-	padding: 10px;
-	display: grid;
-	grid-template-columns: auto 2fr 1fr 1fr;
-	gap: 10px;
-}
 .items {
+	overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 	overflow-y: scroll;
 	max-height: 400px;
 }
-.name {
-	text-shadow: 1px 1px 1px $black;
-}
-.price {
-	justify-self: center;
-	background-color: $primary;
-	padding: 10px;
-	border-radius: 10px;
-}
-.button {
-	justify-self: end;
-}
+
 .buy-btn {
 	margin: 0 auto;
 }
@@ -105,40 +75,20 @@ const cartStore = useCartStore()
 }
 .empty {
 	font-size: 2em;
-	height: 100px;
 	position: absolute;
 	top: 50%;
-	margin-top: -50px;
-	text-align: center;
-	width: 100%;
-}
-.successful-purchase {
-	position: fixed;
-	top: 50%;
 	left: 50%;
-	background-image: $gradient;
-	width: calc(100vw - 300px);
-	height: calc(100vh - 300px);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50px;
-	font-size: 2em;
-	color: $light;
-	text-shadow: 1px 1px 1px $black;
 	transform: translate(-50%, -50%);
-}
-.animation-enter-active {
-	transition: all 0.3s ease-out;
 }
 
 .animation-leave-active {
-	transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+	transition: all 0.3s;
 }
 
 .animation-enter-from,
 .animation-leave-to {
-	transform: translateX(20px);
+	transform: translateX(-150px);
+
 	opacity: 0;
 }
 </style>

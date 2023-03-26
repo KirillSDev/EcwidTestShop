@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container" @click="goToProduct(product)">
 		<div class="header">
 			<h3 class="name">{{ product.name }}</h3>
 			<p class="price">{{ product.price + ' $' }}</p>
@@ -23,15 +23,26 @@
 
 <script lang="ts" setup>
 import Button from './Button.vue'
-import { defineProps } from 'vue'
 import { IProduct } from '@interfaces/Product.interface'
 import { getStatus } from '@utils/CartUtils'
 import { checkInCart } from '@utils/CartUtils'
-
+import { useRouter } from 'vue-router'
+import { useProductsStore } from '@store/ProductsStore'
+const productsStore = useProductsStore()
 interface IProps {
 	product: IProduct
 }
 const props = defineProps<IProps>()
+const router = useRouter()
+const goToProduct = (product: IProduct) => {
+	productsStore.setCurrentProduct(product)
+	router.push({
+		name: 'product',
+		params: {
+			id: product.id
+		}
+	})
+}
 </script>
 
 <style lang="scss" scoped>
@@ -45,14 +56,7 @@ const props = defineProps<IProps>()
 	max-width: 220px;
 	border-radius: 10px;
 	height: fit-content;
-	background-image: linear-gradient(
-		to left top,
-		#f5e9cf,
-		#f1cca8,
-		#f1ad8a,
-		#f08a7a,
-		#e96479
-	);
+	background-image: $gradient;
 	position: relative;
 	transition: all 0.2s;
 	display: flex;
@@ -76,6 +80,7 @@ const props = defineProps<IProps>()
 }
 .name {
 	word-break: break-word;
+	color: $black;
 	font-weight: 100;
 }
 .buy-btn {
@@ -89,6 +94,7 @@ const props = defineProps<IProps>()
 	background-color: $black;
 	max-width: fit-content;
 	width: 100%;
+	font-weight: 100;
 	height: fit-content;
 	margin: auto 0;
 	padding: 10px;
@@ -113,6 +119,7 @@ const props = defineProps<IProps>()
 //animations
 .container:hover {
 	background-color: $light;
+
 	.image {
 		transform: scale(1.2);
 	}
@@ -121,17 +128,16 @@ const props = defineProps<IProps>()
 .container:hover::before {
 	content: 'More information';
 	font-size: 1em;
-	font-weight: 900;
+	font-weight: 100;
 	position: absolute;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: $light;
-	text-shadow: 1px 1px 2px $black;
 	border: 1px solid $black;
 	border-radius: 10px;
 	z-index: 20;
-	background-color: #f1ac8a75;
+	background-color: #413f4198;
 	width: 100%;
 	height: 100%;
 	min-height: 40px;

@@ -49,7 +49,6 @@ const props = withDefaults(defineProps<IButton>(), {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	max-width: 100px;
 	width: 100%;
 	min-height: 40px;
 	height: 100%;

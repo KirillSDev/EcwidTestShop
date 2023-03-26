@@ -32,17 +32,17 @@
 
 @keyframes LoadingAnimation {
 	0% {
-		background: rgb(214, 195, 195);
+		background: rgb(0, 0, 0);
 		opacity: 0;
 	}
 
 	50% {
-		background: rgb(163, 53, 53);
+		background: rgb(94, 92, 92);
 		opacity: 1;
 	}
 
 	100% {
-		background: rgb(214, 195, 195);
+		background: rgb(0, 0, 0);
 		opacity: 0;
 	}
 }

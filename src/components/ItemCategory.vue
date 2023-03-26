@@ -52,7 +52,7 @@ const props = defineProps<{ category: ICategory }>()
 	position: absolute;
 	z-index: 20;
 	font-size: 1em;
-
+	font-weight: 100;
 	color: white;
 	background-color: rgba(0, 0, 0, 0.637);
 	padding: 10px;
