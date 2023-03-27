@@ -1,28 +1,24 @@
 <template>
-	<button class="button">
-		<CartIcon class="icon" />
-		<div class="quantity" v-if="quantityProducts > 0 && quantityProducts < 10">
-			{{ quantityProducts }}
+	<button :class="$style.button">
+		<CartIcon :class="$style.icon" />
+		<div :class="$style.quantity" v-if="quantity > 0 && quantity < 10">
+			{{ quantity }}
 		</div>
-		<div class="quantity" v-else-if="quantityProducts > 9">>9</div>
+		<div :class="$style.quantity" v-else-if="quantity > 9">>9</div>
 	</button>
 </template>
 
 <script lang="ts" setup>
 import CartIcon from '@assets/icons/cart.svg?component'
-import { defineProps } from 'vue'
-import { ref } from 'vue'
-
-interface ICartButton {
-	quantity: number
-}
-const props = withDefaults(defineProps<ICartButton>(), {
-	quantity: 0
+import { useCartStore } from '@store/CartStore'
+import { computed } from 'vue'
+const cartStore = useCartStore()
+const quantity = computed(() => {
+	return cartStore.cart.length
 })
-const quantityProducts = ref(props.quantity)
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" module>
 @import '@scss/colors.scss';
 .button {
 	display: flex;

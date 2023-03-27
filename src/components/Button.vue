@@ -1,6 +1,7 @@
 <template>
 	<button
 		class="main-btn"
+		@click.stop
 		:class="{
 			primary: props.apperance === 'primary',
 			unprimary: props.apperance === 'unprimary'
@@ -48,9 +49,9 @@ const props = withDefaults(defineProps<IButton>(), {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	max-width: 100px;
 	width: 100%;
 	min-height: 40px;
+	height: 100%;
 	border-radius: 11px;
 	border: 1px solid $black;
 }
