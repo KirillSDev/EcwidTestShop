@@ -63,6 +63,7 @@ const handleImageClick = (img: IGalleryProductImages) => {
 	display: flex;
 	gap: 20px;
 	margin: 0 auto;
+	margin-top: calc(50px);
 	align-items: center;
 	padding: 10px;
 	width: fit-content;
@@ -71,9 +72,8 @@ const handleImageClick = (img: IGalleryProductImages) => {
 	max-width: 300px;
 	width: 100%;
 	height: 300px;
+	flex: none;
 	border-radius: 10px;
-	display: block;
-
 	overflow: hidden;
 	position: relative;
 }
@@ -87,7 +87,7 @@ const handleImageClick = (img: IGalleryProductImages) => {
 .product-details {
 	max-width: 800px;
 	width: 100%;
-	font-size: 1.2em;
+	font-size: 1em;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -96,19 +96,24 @@ const handleImageClick = (img: IGalleryProductImages) => {
 	font-weight: 100;
 }
 .details-header {
-	text-align: center;
+	text-align: start;
 }
 .description {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	line-height: calc(1.4em + 2px);
 	font-style: italic;
 }
 .gallery {
 	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	gap: 10px;
+}
+.option {
+	background-color: rgb(202, 202, 29);
+	height: 100px;
+	width: 100px;
 }
 .img-from-gallery {
 	cursor: pointer;
@@ -122,6 +127,18 @@ const handleImageClick = (img: IGalleryProductImages) => {
 @media (max-width: 750px) {
 	.container {
 		flex-direction: column;
+		margin-top: 0px;
+	}
+	.product-details {
+		margin-bottom: 40px;
+	}
+	.buy-btn {
+		position: fixed !important;
+		width: calc(100vw - 10px) !important;
+		z-index: 1000;
+		margin: 5px;
+		left: 0;
+		bottom: 0;
 	}
 }
 </style>
