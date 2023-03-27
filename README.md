@@ -28,25 +28,27 @@ This is an example of an online store.
 
 ### Build && Launch
 
-- Clone the repository to your local machine:
+<ol>
+
+<li> Clone the repository to your local machine: </li>
 
 ```bash
     git clone https://github.com/KirillSDev/EcwidTestShop
 ```
 
-- Install Node.js version v18.12.1 using nvm:
+<li> Install Node.js version v18.12.1 using nvm: </li>
 
 ```bash
     nvm install v18.12.1
 ```
 
-- Install dependencies using yarn:
+<li>  Install dependencies using yarn: </li>
 
 ```bash
     yarn
 ```
 
-- To run the project, you will need to create a .env file at the root of the project and add the following variables:
+<li>   To run the project, you will need to create a .env file at the root of the project and add the following variables:  </li>
 
 ```bash
     VITE_STORE_ID=STORE_ID
@@ -55,10 +57,11 @@ This is an example of an online store.
 
 If you do not have these credentials, please contact the project owner to obtain them.
 
-- Start the development server:
+<li> Start the development server: </li>
 
 ```bash
    yarn dev
 ```
 
-- Open your web browser and navigate to http://localhost:5000 to view the running application.
+<li> Open your web browser and navigate to http://localhost:5000 to view the running application. </li>
+</ol>
