@@ -64,4 +64,10 @@ const props = defineProps<{ product: IProduct }>()
 		font-size: 0.8em;
 	}
 }
+@media (max-width: 350px) {
+	.cart-item {
+		display: flex;
+		flex-direction: column;
+	}
+}
 </style>
