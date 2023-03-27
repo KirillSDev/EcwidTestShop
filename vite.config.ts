@@ -30,7 +30,7 @@ export default defineConfig({
 				manualChunks: {
 					home: ['src/pages/HomePage.vue'],
 					'other-page': [
-						'src/pages/DetailPage.vue',
+						'src/pages/DetailsPage.vue',
 						'src/pages/CategoryPage.vue',
 						'src/pages/CartPage.vue'
 					]
