@@ -81,6 +81,7 @@ const goToProduct = (product: IProduct) => {
 .name {
 	word-break: break-word;
 	color: $black;
+	font-size: 1em;
 	font-weight: 100;
 }
 .buy-btn {
