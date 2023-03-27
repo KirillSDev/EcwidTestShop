@@ -51,8 +51,8 @@ This is an example of an online store.
 <li>   To run the project, you will need to create a .env file at the root of the project and add the following variables:  </li>
 
 ```bash
-    VITE_STORE_ID=STORE_ID
-    VITE_TOKEN=YOUR_TOKEN
+    VITE_STORE_ID=58958138
+    VITE_TOKEN=public_7BxbJGWyDaZfSQqjVS5Ftr4jzXkS43UD
 ```
 
 If you do not have these credentials, please contact the project owner to obtain them.
