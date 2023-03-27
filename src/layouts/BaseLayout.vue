@@ -1,6 +1,7 @@
 <template>
 	<header :class="$style.header">
 		<p :class="$style.home" @click="goToHome">Mini-shop - Home</p>
+		<p :class="$style.phone">+ 580(12)975-84-08</p>
 		<ICartButton @click="goToCart" />
 	</header>
 	<main :class="$style.main">
@@ -35,6 +36,10 @@ const goToHome = () => {
 	color: white;
 	align-items: center;
 }
+.phone {
+	margin-left: auto;
+	margin-right: 20px;
+}
 .main {
 	overflow: scroll;
 	overflow-x: hidden;
@@ -46,5 +51,10 @@ const goToHome = () => {
 }
 .home:hover {
 	opacity: 0.7;
+}
+@media (max-width: 500px) {
+	.phone {
+		display: none;
+	}
 }
 </style>
