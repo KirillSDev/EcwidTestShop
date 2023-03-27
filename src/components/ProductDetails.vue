@@ -1,7 +1,7 @@
 <template>
 	<div :class="$style.container">
 		<div :class="$style['image-container']">
-			<img :class="$style['main-image']" :src="currentImage.thumbnailUrl" />
+			<img :class="$style['main-image']" :src="currentImage.thumbnailUrl" alt="main-image"/>
 		</div>
 		<div :class="$style['product-details']">
 			<div :class="$style['details-header']">
@@ -26,6 +26,7 @@
 					:key="img.id"
 					:class="$style['img-from-gallery']"
 					:src="img.thumbnailUrl"
+					alt="product-image"
 					height="100"
 				/>
 			</div>
