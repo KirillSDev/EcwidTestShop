@@ -8,6 +8,11 @@
 				<h3 :class="$style.name">{{ product.name }}</h3>
 				<h4 :class="$style.price">{{ product.price + ' $' }}</h4>
 			</div>
+			<ProductOptions
+				:option="option"
+				v-for="(option, index) in product.options"
+				:key="index"
+			/>
 			<h4 :class="$style.info">Информация о товаре:</h4>
 			<div
 				id="product-description"
@@ -39,19 +44,17 @@ import Button from '@components/Button.vue'
 import { ref } from 'vue'
 import { getStatus } from '@utils/CartUtils'
 import { checkInCart } from '@utils/CartUtils'
-import { useProductsStore } from '@store/ProductsStore'
 import { IGalleryProductImages, IProduct } from '@interfaces/Product.interface'
+import ProductOptions from './ProductOptions.vue'
 
 const props = defineProps<{ product: IProduct }>()
 const currentProduct = ref(props.product)
-
 const images = ref([...currentProduct.value.galleryImages])
 const currentImage = ref({
 	id: 51245,
-	thumbnailUrl: currentProduct.value.thumbnailUrl
+	thumbnailUrl: currentProduct.value.imageUrl
 })
 const handleImageClick = (img: IGalleryProductImages) => {
-	const imageFromGallery = img
 	images.value = images.value.concat(currentImage.value)
 	currentImage.value = img
 	images.value = images.value.filter((image) => image.id !== img.id)
