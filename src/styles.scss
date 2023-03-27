@@ -7,13 +7,16 @@
 }
 #app {
 	font-family: 'Lato', sans-serif;
+	height: 100vh;
+	overflow: hidden;
+	background-image: $gradient;
 }
 * {
 	scrollbar-width: auto;
 }
 
 *::-webkit-scrollbar {
-	width: 1px;
+	width: 0px;
 }
 
 *::-webkit-scrollbar-track {

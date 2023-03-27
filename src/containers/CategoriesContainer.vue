@@ -36,7 +36,6 @@ const goToCategory = (category: ICategory) => {
 	margin: 0px auto;
 	display: grid;
 	max-width: fit-content;
-
 	gap: 20px;
 	grid-template-columns: repeat(2, auto);
 }

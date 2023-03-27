@@ -7,7 +7,7 @@
 <script setup lang="ts"></script>
 <style lang="scss" scoped>
 .container {
-	height: calc(100vh - 70px);
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
