@@ -4,7 +4,7 @@
 
 This is an example of an online store.
 
-![Image alt](https://github.com/kirillsdev/EcwidTestShop/raw/develop/public/image.jpg)
+![Image alt](https://github.com/kirillsdev/EcwidTestShop/raw/main/public/image.jpg)
 
 ### Project configuration:
 
