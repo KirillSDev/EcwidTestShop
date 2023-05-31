@@ -46,25 +46,22 @@ This is an example of an online store.
 
 ```bash
     yarn
-    cd client 
-    yarn
 ```
 
 <li>   To run the project, you will need to create a .env file at the root of the project and add the following variables:  </li>
 
 ```bash
-    SECRET_KEY=key555frogdog
-    DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=root
-    DB_DATABASE=my-test4
+    VITE_STORE_ID=58958138
+    VITE_TOKEN=public_7BxbJGWyDaZfSQqjVS5Ftr4jzXkS43UD
 ```
+
+If you do not have these credentials, please contact the project owner to obtain them.
 
 <li> Start the development server: </li>
 
 ```bash
-   yarn start 
-   yarn client
+   yarn dev
 ```
 
-
+<li> Open your web browser and navigate to http://localhost:5000 to view the running application. </li>
+</ol>
